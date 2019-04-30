@@ -13,10 +13,26 @@ namespace Shipping.Controllers
       return View();
     }
 
-    [HttpGet("/parcels")]
-    public ActionResult CalculatePrice()
+    [HttpGet("/parcels/invalid")]
+    public ActionResult Invalid()
     {
       return View();
     }
+
+    [HttpPost("/parcels")]
+    public ActionResult CalculatePrice(string height, string width, string depth, string weight)
+    {
+      int i = 0;
+      if(int.TryParse(height, out i) && int.TryParse(width, out i) && int.TryParse(depth, out i) && int.TryParse(weight, out i))
+      {
+        Parcel newParcel = new Parcel(height, width, depth, weight);
+        return View(newParcel);
+      }
+      else
+      {
+        return RedirectToAction("Invalid");
+      }
+    }
+
   }
 }

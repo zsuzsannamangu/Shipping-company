@@ -12,12 +12,12 @@ namespace Shipping.Models
     private int _currentId = 0;
     private static List<Parcel> _instances = new List<Parcel> {};
 
-    public Parcel (int height, int width, int depth, int weight)
+    public Parcel (string height, string width, string depth, string weight)
     {
-      _height = height;
-      _width = width;
-      _depth = depth;
-      _weight = weight;
+      _height = int.Parse(height);
+      _width = int.Parse(width);
+      _depth = int.Parse(depth);
+      _weight = int.Parse(weight);
       _parcelId = _currentId;
       _currentId ++;
       _instances.Add(this);
@@ -45,7 +45,7 @@ namespace Shipping.Models
 
     public int CostShip()
     {
-      return ((Volume() * weight) / 5);
+      return ((Volume() * _weight) / 5);
     }
 
   }
