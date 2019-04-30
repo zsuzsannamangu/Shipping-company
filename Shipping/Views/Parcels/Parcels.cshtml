@@ -1,0 +1,19 @@
+@using Shipping.Models;
+
+<h1>Shipping cost calculation</h1>
+
+<h2>According to the dimensions you entered, this parcel would fit best:</h2>
+<ul>
+  <li>@Model.Height</li>
+  <li>@Model.Width</li>
+  <li>@Model.Delith</li>
+  <li>@Model.Weight</li>
+</ul>
+
+<p>Volume of your package is</p>
+<p>@Model.Volume()</p>
+
+<p>The shipping cost is</p>
+<p>@Model.CostShip()</p>
+
+<a href="/parcels/new">New parcel</a>
